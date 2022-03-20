@@ -63,44 +63,89 @@ class Deck(object):
 
 class Player(object):
 	def __init__(self):
+
+		## list attribute hand
 		self.hand = []
 
+	## player draws from deck
 	def draw(self, deck):
 		self.hand.append(deck.drawCard())
 		return self
 
+	## player shows hand
 	def showHand(self):
 		for card in self.hand:
 			card.show()
 
+	## player removes card from hand
 	def discard(self):
 		return self.hand.pop()
 
 
-## create deck object 
+#p1_deck = []
+#p2_deck = []
+		
+## Create deck object
 deck = Deck()
+
+## Shuffle deck
+deck.shuffle()
+
+## Simulate game 
+# create players
+p1 = Player()
+p2 = Player()
+
+## Deal cards
+for i in range(1, 26):
+	p1.draw(deck)
+	p2.draw(deck)
+
+#p1.showHand()
+#p2.showHand()
+
+
+
+
+
+
+
+
+
+
+## hand out cards
+#for i in range(1, 26):
+#	p1_deck.append(p1.draw(deck))
+
+#	#print(p1_deck)
 
 ## 2) Requirement: application should shuffle deck
 ## shuffle deck
-deck.shuffle()
+#deck.shuffle()
 
 ## rebuild deck
 #deck.build()
 
-
 ## 3) Requirement: Simulate game 
 
-print("CARD GAME COMMENCING!!!\n")
+#print("CARD GAME COMMENCING!!!\n")
 
 ## Player 1
-p1 = Player()
-#p2.draw(deck).draw(deck)
-p1.draw(deck)
-p1.showHand()
+#p1 = Player()
+#p1.draw(deck).draw(deck)
+#p1.draw(deck)
+#p1.showHand()
 
 ## Player 2
-p2 = Player()
+#p2 = Player()
 #p2.draw(deck).draw(deck)
-p2.draw(deck)
-p2.showHand()
+#p2.draw(deck)
+#p2.showHand()
+
+#/////////////show leftover deck
+#deck.show()
+
+
+
+
 
