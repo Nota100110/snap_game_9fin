@@ -80,18 +80,27 @@ class Player(object):
 ## create deck object 
 deck = Deck()
 
+## 2) Requirement: application should shuffle deck
 ## shuffle deck
 deck.shuffle()
 
 ## rebuild deck
 #deck.build()
 
+
+## 3) Requirement: Simulate game 
+
+print("CARD GAME COMMENCING!!!\n")
+
+## Player 1
 p1 = Player()
-#bob.draw(deck).draw(deck)
+#p2.draw(deck).draw(deck)
 p1.draw(deck)
 p1.showHand()
 
+## Player 2
 p2 = Player()
-#bob.draw(deck).draw(deck)
+#p2.draw(deck).draw(deck)
 p2.draw(deck)
 p2.showHand()
+
