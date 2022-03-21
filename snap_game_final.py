@@ -108,6 +108,6 @@ p2.PlayCard().show()
 
 ## Player to say snap first code...
 if p1.PlayCard() == p2.PlayCard():
-              print("SNAP!")
+	print("SNAP!")
 else:
     pass
