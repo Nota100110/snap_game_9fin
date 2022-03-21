@@ -101,8 +101,10 @@ for i in range(1, 26):
 	p1.draw(deck)
 	p2.draw(deck)
 
-	## Player to say snap first code...
-	if p2.draw(deck) == p1.draw(deck):
+
+p1.showHand()
+p2.showHand()
+
+## Player to say snap first code...
+if p2.draw(deck) == p1.draw(deck):
 	print("SNAP!")
-	p1.showHand()
-	p2.showHand()
