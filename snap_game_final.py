@@ -82,12 +82,11 @@ class Player(object):
   def playCard(self):
      return self.hand.pop()
      
-  def takeCards(self, card1, card2):
-     return self.hand.append(card1, card2)
+  ## need to find way to append winning cards from snap game
+  def takeCards(self, winnings):
+     self.hand.append(winnings)
+     return self
 
-  ##player plays random card 
-  #def PlayCard(self):
-  #  return random.choice(self.hand)
 
 ## Create deck object
 deck = Deck()
@@ -108,9 +107,12 @@ for i in range(1, 27):
 count = 1
 ## players yell snap at random
 a = ["Player 1:", "Player 2:"]
+## list represents non-match played hands
+tmp = []
 while count <= 26:
     x = p1.playCard()
     y = p2.playCard()
+    ## using value match so there's more liklihood of a snap.
     if x.value == y.value:
         print("-----------------------------------------------------------")
         print("Player 1:") 
@@ -118,15 +120,24 @@ while count <= 26:
         print("Player 2:")
         y.show()
 
+        ## select random winner
         winner = random.choice(a)
         print("\n", winner)
-        print("Snap!\n")
-
+        print(" \"Snap!!!!!\"\n")
         if winner == "Player 1:":
-          print(winner)
+          #print(winner)
+          print("The winner of this round is: {}".format(winner))
+          p1.takeCards(x)
+          p1.takeCards(y)
+          for t in tmp:
+            p1.takeCards(t)
         elif winner == "Player 2:":
-          print(winner)
-        
+          #print(winner)
+          print("Winner is: {}".format(winner))
+          p2.takeCards(x)
+          p2.takeCards(y)
+          for t in tmp:
+            p2.takeCards(t)
         count+=1
         time.sleep(1)
         break
@@ -134,9 +145,18 @@ while count <= 26:
         print("-----------------------------------------------------------")
         print("Player 1:") 
         x.show()
+        tmp.append(x)
         print("Player 2:") 
         y.show()
+        tmp.append(y)
         print("No match!\n")
         count+=1
         time.sleep(1)
         #sys.stdout.flush()
+
+print("\n//////////PLAYER 1 HAND:")
+p1.showHand()
+print("-------------------------------------------------------------------\n")
+print("////////////PLAYER 2 HAND:")
+p2.showHand()
+print("-------------------------------------------------------------------\n")
